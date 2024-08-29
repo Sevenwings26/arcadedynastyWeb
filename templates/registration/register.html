@@ -1,0 +1,16 @@
+{% extends 'assets/base.html' %} {% block title %} Sign up {% endblock %} 
+{% block content %} 
+<div class="flex flew-col justify-center">
+<form action="" method="post">
+  <h2 class="m2 text-3xl">Register as a New User</h2>
+  {% csrf_token %} 
+  <div class="mb-3">
+    {{form.as_p}}
+  </div>
+  <p class="mb-3">Already have an account? Login --- <a href="{% url 'login' %}"><span class="text-gray-800">Here</span></a></p>
+  <button type="submit" class="bg-black mb-5">Sign Up</button>
+</form>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,93 @@
+.hero-section {
+    position: relative;
+    width: 95%;
+    margin: 2rem 2rem;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 150vh;
+}
+
+
+.carousel-control-prev{
+	left: 0px;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+	/* border-radius: 2px; */
+	/* background: #fff; */
+    color: #fff;
+	position: absolute;
+	right: 0px;
+	font-size: 38px;
+	top: 40%;
+	width: 60px;
+	height: 60px;
+	line-height: 20px;
+	opacity: 1;
+}
+
+
+.big-tagline a{
+	background: none;
+	position: relative;
+	display: inline-block;
+	font-size: 18px;
+	color: #333333;
+	font-weight: 500;
+}
+
+
+.big-tagline a,
+.big-tagline a.hover-btn-new::after {
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.big-tagline a.hover-btn-new::before,
+.big-tagline a.hover-btn-new::after {
+  background: #fff;
+  content: '';
+  position: absolute;
+  z-index: 1;
+}
+
+.big-tagline a.hover-btn-new:hover span {
+  color: #eea412;
+}
+
+.hover-btn-new::before {
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.hover-btn-new::after {
+  background: #eea412 !important;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.hover-btn-new span{
+	position: relative;
+	z-index: 2;
+}
+
+.hover-btn-new:hover:after {
+  height: 0;
+  left: 50%;
+  top: 50%;
+  width: 0;
+}
+
+
+.first-section .big-tagline a:hover{
+	color: #333333;
+}
