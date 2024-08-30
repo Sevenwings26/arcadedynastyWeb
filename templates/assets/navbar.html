@@ -1,9 +1,10 @@
-<body class="antialiased bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400">
+{% load static %}
+<body class="">
   <header>
-    <nav class="flex flex-wrap items-center justify-between w-full py-1 md:py-0 px-4 text-lg text-gray-700 bg-white">
+    <nav class="flex flex-wrap items-center justify-between w-full py-1 md:py-0 px-4 text-lg text-gray-700 bg-white mx-auto drop-shadow">
       <div>
-        <a href="{{ logo }}">
-          <img src="{{logo.url}}" alt="Arcade Dynasty" />
+        <a href="{% url 'home' %}">
+          <img src="{% static 'assets\images\logo\arcade-dynasty-logo.png' %}" alt="Arcade Dynasty" />
         </a>
       </div>
 
@@ -17,31 +18,29 @@
             <a class="md:p-4 py-2 block text-black hover:text-gray-500" href="{% url 'home' %}">Home</a>
           </li>
           <li>
-            <a class="md:p-4 py-2 block text-black hover:text-gray-500" href="#">Blog</a>
+            <a class="md:p-4 py-2 block text-black hover:text-gray-500" href="{% url 'blog' %}">Blog</a>
           </li>
           <li class="relative">
             <a class="md:p-4 py-2 block text-black hover:text-gray-500 cursor-pointer" id="gallery-link">Gallery</a>
             <!-- Dropdown Menu -->
-            <ul class="absolute hidden bg-white text-gray-900 shadow-lg rounded-md z-50" id="gallery-dropdown">
-              <li><a class="block px-4 py-2 text-black hover:text-gray-500" href="#">Link 1</a></li>
-              <li><a class="block px-4 py-2 text-black hover:text-gray-500" href="#">Link 2</a></li>
-              <li><a class="block px-4 py-2 text-black hover:text-gray-500" href="#">Link 3</a></li>
-              <li><a class="block px-4 py-2 text-black hover:text-gray-500" href="#">Link 4</a></li>
+            <ul class="absolute hidden bg-white text-gray-900 shadow-lg rounded-md z-50 -left-10 w-48 mt-2" id="gallery-dropdown">
+              <li><a class="block px-4 py-2 text-black hover:text-gray-500 hover:underline" href="#">Arcade Fashion Weekend</a></li>
+              <li><a class="block px-4 py-2 text-black hover:text-gray-500 hover:underline" href="#">El- almor</a></li>
             </ul>
           </li>
           <li>
-            <a class="md:p-4 py-2 block text-black hover:text-gray-500" href="#">About</a>
+            <a class="md:p-4 py-2 block text-black hover:text-gray-500" href="{% url 'about' %}">About</a>
           </li>
           <li>
             <a class="md:p-4 py-2 block text-black hover:text-gray-500" href="#">Designers</a>
           </li>
           {% if user.is_authenticated %}
           <li class="relative">
-            <span class="md:p-4 py-2 block text-purple-500 cursor-pointer" id="user-link">{{ user.username }}</span>
+            <span class="md:p-4 py-2 block text-red-700 cursor-pointer" id="user-link">{{ user.username }}</span>
             <!-- Dropdown Menu -->
-            <ul class="absolute hidden bg-white text-gray-900 shadow-lg rounded-md z-50" id="user-dropdown">
-              <li><a class="block px-4 py-2 text-black hover:text-gray-500" href="">Profile</a></li>
-              <li><a class="block px-4 py-2 text-black hover:text-gray-500" href="">Settings</a></li>
+            <ul class="absolute hidden bg-white text-gray-900 shadow-lg rounded-md z-50 left-0 w-48 mt-2" id="user-dropdown">
+              <li><a class="block px-4 py-2 text-black hover:text-gray-500 hover:underline" href="">Profile</a></li>
+              <li><a class="block px-4 py-2 text-black hover:text-gray-500 hover:underline" href="">Settings</a></li>
             </ul>
           </li>
           <li>

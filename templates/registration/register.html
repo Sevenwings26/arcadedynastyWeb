@@ -1,15 +1,15 @@
 {% extends 'assets/base.html' %} 
 {% block title %} Sign up {% endblock %} 
 {% block content %} 
-<div class="flex flew-col justify-center items-center w-1/2">
-<form action="" method="post" class="flex flex-col">
+<div class="flex flew-col justify-center items-center w-2/3 m-auto">
+<form action="" method="post" class="flex flex-col justify-center mt-6">
   <h2 class="m2 text-3xl">Register as a New User</h2>
   {% csrf_token %} 
   <div class="">
     {{form.as_p}}
   </div>
-  <p class="mb-3">Already have an account? Login --- <a href="{% url 'login' %}"><span class="text-gray-800">Here</span></a></p>
-  <button type="submit" class="bg-black mb-5">Sign Up</button>
+  <p class="mb-3">Already have an account? Login --- <a href="{% url 'login' %}"><span class="text-red-600 underline uppercase">Here</span></a></p>
+  <button type="submit" class="bg-black mb-5 p-2 text-white w-2/3">Sign Up</button>
 </form>
 </div>
 {% endblock %}

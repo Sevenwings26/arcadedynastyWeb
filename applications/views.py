@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import GeneralInfo, HeroCarousel, ViewMore, Blog, Gallery, UpcomingEvent
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -29,3 +30,15 @@ def home(request):
     }
     return render(request, "index.html", context)
     
+
+# Create your views here.
+@login_required(login_url='/login')
+def about(request):
+    context = {} 
+    return render(request, "about.html", {})
+
+# Create your views here.
+@login_required(login_url='/login')
+def blog(request):
+    context = {} 
+    return render(request, "blog.html", {})
