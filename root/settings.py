@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -55,6 +56,8 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'account.User'
 
+
+
 # SITE_ID = 1
 
 TAILWIND_APP_NAME = 'theme'
@@ -80,7 +83,7 @@ ROOT_URLCONF = "root.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR, "templates"],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -160,4 +163,19 @@ MEDIA_URL = 'media/'
 
 # Specify the directory where media files are stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+mail = os.environ.get("EMAIL")
+mail_pass = os.environ.get("EMAIL_PASSWORD")
+# EMAIL_HOST = 'smtp.mail.outlook.com'
+
+
+# settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = mail
+EMAIL_HOST_PASSWORD = mail_pass
+DEFAULT_FROM_EMAIL = "lastborn.ai@gmail.com"
 

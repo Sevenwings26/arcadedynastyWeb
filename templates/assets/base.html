@@ -2,95 +2,55 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-
-  <!-- Basic -->
-  <meta charset="utf-8">
+<head>
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">   
-  
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Site Metas -->
-  <title>Arcade Dynasty</title>  
-  <meta name="keywords" content="">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <!-- Site Icons -->
-  <link rel="shortcut icon" href="" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="{% static 'assets/images/apple-touch-icon.png' %}">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
-  <!-- Site CSS -->
-  <link rel="stylesheet" href="{% static 'assets/style.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/stylehero.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcade Dynasty</title>
+  <!-- stylings -->
   {% tailwind_css %}
-  <!-- ALL VERSION CSS -->
-  <link rel="stylesheet" href="{% static 'assets/css/versions.css' %}">
-  <!-- Responsive CSS -->
-  <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/styles/forms.css' %}">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
-
-  <!-- Modernizer for Portfolio -->
-  <script src="{% static 'assets/js/modernizer.js'}"></script>
-
-  <!-- [if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]> -->
+  <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+    <!-- Responsive CSS -->
+  <!-- <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}"> -->
 
 </head>
-<body class="host_version"> 
-
-	<!-- Modal -->
-  {% include 'assets/modal.html' %}
-  <!-- Modal ends  -->
-
-    <!-- LOADER -->
-	<!-- <div id="preloader">
-		<div class="loader-container">
-			<div class="progress-br float shadow">
-				<div class="progress__item"></div>
-			</div>
-		</div>
-	</div> -->
-	<!-- END LOADER -->	
-	
-	<!-- Start header -->
-   {% include 'assets/navbar.html' %}
-   <!-- End header -->
+<body class="bg-white">
+  <!-- Start header -->
+  {% include 'assets/navbar.html' %}
+  <!-- End header -->
+ 
+  {% block content %}
   
-   {% block content %}
-   {% endblock %}
-   
-   {% include 'assets/footer.html' %}
-
-  <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-
+  {% endblock %}
+  
+  {% include 'assets/footer.html' %}
+  <!-- scripts -->
+	<!-- <script src="{% static 'assets/js/nav.js' %}"></script> -->
+    <!-- for toggle-button -->
+    <script src="{% static 'assets/scripts/alljs.js' %}"></script>
+    <!-- Include Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    
     <!-- ALL JS FILES -->
-  <script src="{% static 'assets/js/all.js' %}"></script>
-    <!-- ALL PLUGINS -->
-    <script src="{% static 'assets/js/custom.js' %}"></script>
-	<script src="{% static 'assets/js/timeline.min.js' %}"></script>
-	<script src="{% static 'assets/js/swiper.js' %}"></script>
-	<script src="{% static 'assets/js/nav.js' %}"></script>
-	<!-- <script src="{% static 'assets/js/modal-ajax.js' %}"></script> -->
+  <!-- <script src="{% static 'assets/js/all.js' %}"></script> -->
+  <!-- ALL PLUGINS -->
+  <!-- <script src="{% static 'assets/js/custom.js' %}"></script>
+  <script src="{% static 'assets/js/timeline.min.js' %}"></script>
+<script src="{% static 'assets/js/swiper.js' %}"></script>
+<script src="{% static 'assets/js/nav.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script> -->
 
-  <!-- for toggle-button -->
-  <script src="{% static 'assets/scripts/alljs.js' %}"></script>
-  <!-- <script src="{% static 'assets/js/script.js' %}"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-	<script>
-		timeline(document.querySelectorAll('.timeline'), {
-			forceVerticalMode: 700,
-			mode: 'horizontal',
-			verticalStartPosition: 'left',
-			visibleItems: 4
-		});
-	</script>
+<script>
+  timeline(document.querySelectorAll('.timeline'), {
+    forceVerticalMode: 700,
+    mode: 'horizontal',
+    verticalStartPosition: 'left',
+    visibleItems: 4
+  });
+</script>
 </body>
 </html>

@@ -1,24 +1,27 @@
-form {
-max-width: 400px;
-margin: auto;
+/* form {
+  max-width: 400px;
+  margin: auto;
+  background-color: gray;
+  border-radius: 5%;
+  padding: 2rem;
 }
 
 input {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 h2 {
-text-align: center;
+  text-align: center;
 }
 button {
-display: block;
-width: 100%;
-padding: 10px;
-background-color: #4CAF50;
-color: white;
-border: none;
-cursor: pointer;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 button:hover {
-background-color: #45a049;
-}
+  background-color: #45a049;
+} */

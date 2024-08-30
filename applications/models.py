@@ -31,7 +31,7 @@ class HeroCarousel(models.Model):
 # Hero - section model 
 class ViewMore(models.Model):
     theme = models.CharField(max_length=255, null=True, blank=True)
-    bg_image = models.ImageField(upload_to='view_images/')
+    bg_image = models.ImageField(upload_to='view_images/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

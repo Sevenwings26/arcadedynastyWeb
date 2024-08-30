@@ -22,7 +22,6 @@ class UserRegistrationForm(UserCreationForm):
         self.fields['username'].label = ''
         self.fields['username'].help_text='<span class="form-text text-muted"><small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_only </small></span>'
         
-        
         self.fields['password1'].widget.attrs['class'] = 'py-3'
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
         self.fields['password1'].label = ''
@@ -36,16 +35,11 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class CustomLoginForm(AuthenticationForm):
-    username = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'block py-3','placeholder': 'Username'}))
-    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': 'block py-3', 'placeholder': 'Password'}))
+    username = forms.EmailField(label='', widget=forms.TextInput(attrs={'class': 'mb-2', 'placeholder': 'Email'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': '', 'placeholder': 'Password'}))
 
-    def __init__(self, *args, **kwargs):
-        super(CustomLoginForm, self).__init__(*args, **kwargs)
-        self.fields['email'].widget.attrs['class'] = 'py-3'
-        self.fields['email'].widget.attrs['placeholder'] ='email'
-        self.fields['email'].label =''
+# form-input
+# form select
+# form textarea 
 
 
-        self.fields['password'].widget.attrs['class'] = 'block py-3 w-full px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
-        self.fields['password'].widget.attrs['password'] ='Password'
-        self.fields['password'].label =''

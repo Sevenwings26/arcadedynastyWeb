@@ -1,27 +1,3 @@
-# from django.shortcuts import render, redirect
-# from django.contrib.auth import login
-# from .forms import UserRegistrationForm
-# from django.contrib.auth.views import LoginView
-
-# # write sign-up views 
-# def register(request):
-#     if request.method == 'POST':
-#         form = UserRegistrationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             # messages.success("Account Successfully Created")
-#             return redirect('/login')
-#     else:
-#         form = UserRegistrationForm()
-#         # messages
-#     return render(request, 'registration/register.html', {'form':form})
-
-
-# class CustomLoginView(LoginView):
-#     template_name ='registration/login.html'    
-    
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from .forms import UserRegistrationForm, CustomLoginForm
@@ -42,7 +18,11 @@ def register(request):
 
 
 class CustomLoginView(LoginView):
-    template_name = 'registration/login.html'
     form_class = CustomLoginForm
-    success_url = reverse_lazy('home')
+    template_name = 'registration/login.html'
+
+    def form_valid(self, form):
+        user = form.get_user()
+        login(self.request, user)
+        return redirect('home')  # Redirect to the home page after login
 
