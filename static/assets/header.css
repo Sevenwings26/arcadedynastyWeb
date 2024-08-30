@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* head styling */
+header{
+    min-height: 8vh;
+    width: 100%;
+    background-color: rgb(22, 22, 22);
+    align-self: center;
+    padding: 28px;
+    color: white;
+    position: fixed;
+}
+header nav{
+    text-transform: uppercase;
+    max-width: 90%;
+    background-color: inherit;
+    margin: auto;
+    margin-top: 2px;
+    display:flex;
+    justify-content: space-between;
+    gap: 500px;
+    text-align: center;
+}
+
+h1{
+    font-size: 40px;
+    color: white;
+}
+ul{
+    list-style: none;
+    /* margin-top: 15px; */
+}
+ul li{
+    display: inline-block;
+    position: relative;
+    gap: 14px;
+    padding: 5px;
+}
+ul li a{
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+ul li ul.dropdown li{
+    width: 180px;
+    display: block;
+    padding: 15px ;
+    line-height: 1;
+    /* text-align: justify; */
+    border: thin solid rgb(165, 162, 162);
+    /* justify-self: first baseline; */
+}
+ul li ul.dropdown li:hover{
+    background: rgba(65, 60, 60, 0.829);
+}
+ul li ul.dropdown li a:hover{
+    color: rgb(240, 233, 233);
+    font-weight: 500; 
+}
+ul li ul.dropdown{
+    position: absolute;
+    z-index: 2;
+    display: none;
+    background-color: rgb(22, 22, 22);
+    text-align: start;
+    border-radius: 2%;
+    box-shadow: 0px 2px 2px 0 rgb(34, 33, 33);
+    left: -30px;
+
+}
+ul li a:hover{
+    /* background-color: aliceblue; */
+    color: rgb(95, 95, 124);
+    transition: 2s;
+}
+ul li:hover ul.dropdown{
+    display: block;
+    transition: 2s;
+}
+
+
+ /* inner Dropdown2  */
+
+ul li ul.dropdown2{
+    position: absolute;
+    z-index: 2;
+    display: none;
+    background-color: rgb(22, 22, 22);
+    text-align: start;
+    border-radius: 2%;
+    box-shadow: 0px 2px 2px 0 rgb(34, 33, 33);
+    left: 145px;
+    top: 15px;
+}
+ul li ul li a:hover{
+    color: rgb(95, 95, 124);
+    transition: 2s;
+}
+ul li ul li:hover ul.dropdown2{
+    display: block;
+}

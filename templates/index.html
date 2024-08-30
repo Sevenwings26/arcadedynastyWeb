@@ -13,8 +13,8 @@
   <div class="carousel-inner">
     {% for image in hero_images %}
     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-      <div class="">
-        <img src="{{ image.bg_image.url }}" class="d-block object-cover" width="100px" height="100px" alt="...">
+      <div class="carousel-box">
+        <img src="{{ image.bg_image.url }}" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
