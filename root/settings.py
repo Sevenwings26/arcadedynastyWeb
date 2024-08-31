@@ -38,9 +38,10 @@ if ENVIRNOMENT == 'development':
 else:
     DEBUG = False
 
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
-ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(',')
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'arcadedynastyweb.onrender.com']
+# ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(',')
 
+CSRF_TRUSTED_ORIGINS = [ "https://arcadedynastyweb.onrender.com" ]
 
 # Application definition
 
