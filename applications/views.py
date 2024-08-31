@@ -15,8 +15,8 @@ def home(request):
 
 
     context = {
-        "logo":general_info.company_logo,
-        "brand":general_info.company_image,
+        
+        "company_logo": getattr(general_info, "company_logo", ""),
 
         "hero_images":hero_images,
 
