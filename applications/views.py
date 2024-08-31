@@ -20,7 +20,8 @@ def home(request):
 
         "hero_images":hero_images,
 
-        'view_image':view_images.bg_image,
+        # 'view_image':view_images.bg_image,
+        "view_image": getattr(view_images, "bg_image", ""),
         "blogs":blogs,
         "events":events,
         # "image_show": main_shows.image.url if main_shows.image else None,
@@ -42,3 +43,10 @@ def about(request):
 def blog(request):
     context = {} 
     return render(request, "blog.html", {})
+
+@login_required(login_url='/login')
+def designersApp(request):
+    context = {} 
+    return render(request, "designers-application.html", {})
+
+

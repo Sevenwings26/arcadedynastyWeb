@@ -138,7 +138,7 @@
           audience, reaching out to local and global markets...
         </li>
       </ul>
-      <a href="/about" class="text-red-500"> Read More </a>
+      <a href="{% url 'about' %}" class="text-red-500"> Read More </a>
     </div>
   </div>
 </section>
@@ -160,7 +160,7 @@
         <img
           src="{{ event.image.url }}"
           alt="{{ event.event_name }}"
-          class="show-image w-full h-full object-cover rounded-lg"
+          class="show-image w-full h-full object-cover rounded-lg italic"
         />
         <p
           class="show-title absolute bottom-12 px-3 py-4 left-1/4 w-1/2 bg-opacity-35 transform -translate-x-1/2 text-black rounded text-left font-bold italic text-3xl"

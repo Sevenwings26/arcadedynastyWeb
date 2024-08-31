@@ -8,7 +8,8 @@
     "build:clean": "rimraf ../static/css/dist",
     "build:tailwind": "cross-env NODE_ENV=production tailwindcss --postcss -i ./src/styles.css -o ../static/css/dist/styles.css --minify",
     "dev": "cross-env NODE_ENV=development tailwindcss --postcss -i ./src/styles.css -o ../static/css/dist/styles.css -w",
-    "tailwindcss": "node ./node_modules/tailwindcss/lib/cli.js"
+    "tailwindcss": "node ./node_modules/tailwindcss/lib/cli.js",
+    "minify": "cleancss ../static/assets/css/style-tailwind.min.css"
   },
   "keywords": [],
   "author": "",
@@ -25,5 +26,8 @@
     "postcss-simple-vars": "^7.0.1",
     "rimraf": "^5.0.1",
     "tailwindcss": "^3.3.2"
+  },
+  "dependencies": {
+    "clean-css-cli": "^5.6.3"
   }
 }

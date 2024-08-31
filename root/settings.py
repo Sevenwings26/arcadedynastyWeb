@@ -11,7 +11,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv
+
+# from environ import Env
+import environ
+env = environ.Env()
+environ.Env.read_env()
+import dj_database_url
+
+
+ENVIRNOMENT = env('ENVIRONMENT', default="production")
+ENVIRNOMENT = "production"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +30,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-*8!9p9fpm43yhnk5#cp2(&30x)vaklnm5-&7ahiufwku@im2l&"
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if ENVIRNOMENT == 'development':
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(',')
 
 
 # Application definition
@@ -52,11 +65,11 @@ INSTALLED_APPS = [
     "theme",
     'django_browser_reload',
     'widget_tweaks',
+    "cloudinary_storage",
+    "cloudinary",
 ]
 
 AUTH_USER_MODEL = 'account.User'
-
-
 
 # SITE_ID = 1
 
@@ -64,6 +77,7 @@ TAILWIND_APP_NAME = 'theme'
 
 INTERNAL_IPS = [
     "127.0.0.1",
+    'localhost',
 ]
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
@@ -76,6 +90,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "root.urls"
@@ -102,20 +117,17 @@ WSGI_APPLICATION = "root.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-
-        # # postgres 
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'arcade-database',
-        # 'USER': 'postgres',
-        # 'PASSWORD': "iarowosola#%4956i",
-        # 'HOST': 'localhost',
-        # 'PORT': '5432'
+if ENVIRNOMENT == 'development':
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': dj_database_url.parse(env('EXTERNAL_DATABASE_URL'))
+    }
 
 
 # Password validation
@@ -164,12 +176,21 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Define the base URL for serving media files
 MEDIA_URL = 'media/'
 
-# Specify the directory where media files are stored
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+if ENVIRNOMENT == "development":
+    # Specify the directory where media files are stored
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+else:
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    CLOUDINARY_STORAGE = {
+        'CLOUDINARY_URL': env('CLOUDINARY_URL'),
+        'CLOUDINARY_CLOUD_NAME' : env('CLOUDINARY_CLOUD_NAME'),
+        'CLOUDINARY_API_KEY': env('CLOUDINARY_API_KEY'),
+     'CLOUDINARY_API_SECRET':env('CLOUDINARY_API_SECRET'),
+    }
 
 
-mail = os.environ.get("EMAIL")
-mail_pass = os.environ.get("EMAIL_PASSWORD")
+# mail = os.environ.get("EMAIL")
+# mail_pass = os.environ.get("EMAIL_PASSWORD")
 # EMAIL_HOST = 'smtp.mail.outlook.com'
 
 
@@ -178,7 +199,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = mail
-EMAIL_HOST_PASSWORD = mail_pass
-DEFAULT_FROM_EMAIL = "lastborn.ai@gmail.com"
-
+EMAIL_HOST_USER = env('EMAIL')
+EMAIL_HOST_PASSWORD = env("EMAIL_PASSWORD")
+DEFAULT_FROM_EMAIL = env('EMAIL')
+ACCOUNT_EMAIL_SUBJECT_PREFIX = " "

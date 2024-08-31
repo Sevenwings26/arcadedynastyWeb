@@ -1,4 +1,9 @@
 /app/
 /smartEDU/
+/node/
 
 /.env/
+
+db.sqlite3
+.DS_Store
+virt/
