@@ -1,7 +1,7 @@
 /app/
 /smartEDU/
 /node/
-
+/root/.env
 /.env/
 
 db.sqlite3

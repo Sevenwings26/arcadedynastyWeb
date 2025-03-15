@@ -1006,6 +1006,10 @@ select {
   margin-top: 2rem;
 }
 
+.box-border {
+  box-sizing: border-box;
+}
+
 .block {
   display: block;
 }
@@ -1358,6 +1362,10 @@ select {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-0 {
+  padding: 0px;
 }
 
 .px-10 {

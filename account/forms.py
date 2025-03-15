@@ -8,8 +8,7 @@ User = get_user_model()
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(label='', widget=forms.TextInput(attrs={'class':'block py-3 w-2/3', 'placeholder':'Unique email address'}))
     username = forms.CharField(label='', max_length=150, widget=forms.TextInput(attrs={'class':'block py-3', 'placeholder':'Username'}))
-    
-    
+        
     class Meta:
         model = User 
         fields = ('username', 'email', 'password1', 'password2',)
@@ -37,6 +36,8 @@ class UserRegistrationForm(UserCreationForm):
 class CustomLoginForm(AuthenticationForm):
     username = forms.EmailField(label='', widget=forms.TextInput(attrs={'class': 'mb-2', 'placeholder': 'Email'}))
     password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class': '', 'placeholder': 'Password'}))
+
+
 
 # form-input
 # form select

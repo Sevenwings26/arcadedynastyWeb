@@ -16,11 +16,12 @@ from pathlib import Path
 import environ
 env = environ.Env()
 environ.Env.read_env()
+
 import dj_database_url
 
 
-ENVIRNOMENT = env('ENVIRONMENT', default="production")
-ENVIRNOMENT = "production"
+ENVIRNOMENT = env('ENVIRONMENT', default="development")
+# ENVIRNOMENT = "production"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -36,10 +37,12 @@ SECRET_KEY = env('SECRET_KEY')
 if ENVIRNOMENT == 'development':
     DEBUG = True
 else:
-    DEBUG = False
+    DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'arcadedynastyweb.onrender.com']
-# ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(',')
+if ENVIRNOMENT == "development":
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'arcadedynastyweb.onrender.com']
 
 CSRF_TRUSTED_ORIGINS = [ "https://arcadedynastyweb.onrender.com" ]
 
@@ -80,6 +83,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
     'localhost',
 ]
+
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 MIDDLEWARE = [
@@ -129,7 +133,7 @@ else:
     DATABASES = {
         'default': dj_database_url.parse(env('EXTERNAL_DATABASE_URL'))
     }
-
+    pass
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
